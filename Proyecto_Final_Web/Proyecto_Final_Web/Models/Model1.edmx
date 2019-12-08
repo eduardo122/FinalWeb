@@ -5,6 +5,17 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="FinalWebModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Afiliados">
+          <Key>
+            <PropertyRef Name="idAfiliado" />
+          </Key>
+          <Property Name="idAfiliado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" />
+          <Property Name="Apellidos" Type="varchar" MaxLength="70" />
+          <Property Name="telefono" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="Parentezco" Type="varchar" MaxLength="30" />
+          <Property Name="idSocio" Type="int" />
+        </EntityType>
         <EntityType Name="AspNetRoles">
           <Key>
             <PropertyRef Name="Id" />
@@ -77,6 +88,18 @@
           <Property Name="FechaIngreso" Type="date" Nullable="false" />
           <Property Name="FechaSalida" Type="date" Nullable="false" />
         </EntityType>
+        <Association Name="FK__Afiliados__idSoc__628FA481">
+          <End Role="Socios" Type="Self.Socios" Multiplicity="0..1" />
+          <End Role="Afiliados" Type="Self.Afiliados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Socios">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Afiliados">
+              <PropertyRef Name="idSocio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -134,12 +157,17 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="FinalWebModelStoreContainer">
+          <EntitySet Name="Afiliados" EntityType="Self.Afiliados" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Socios" EntityType="Self.Socios" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Afiliados__idSoc__628FA481" Association="Self.FK__Afiliados__idSoc__628FA481">
+            <End Role="Socios" EntitySet="Socios" />
+            <End Role="Afiliados" EntitySet="Afiliados" />
+          </AssociationSet>
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
@@ -179,6 +207,11 @@
             <End Role="AspNetRole" EntitySet="AspNetRoles" />
             <End Role="AspNetUser" EntitySet="AspNetUsers" />
           </AssociationSet>
+          <EntitySet Name="Afiliados" EntityType="FinalWebModel.Afiliado" />
+          <AssociationSet Name="FK__Afiliados__idSoc__5FB337D6" Association="FinalWebModel.FK__Afiliados__idSoc__5FB337D6">
+            <End Role="Socio" EntitySet="Socios" />
+            <End Role="Afiliado" EntitySet="Afiliados" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Socio">
           <Key>
@@ -200,6 +233,7 @@
           <Property Name="EstadoMembresita" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="FechaIngreso" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="FechaSalida" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Afiliados" Relationship="FinalWebModel.FK__Afiliados__idSoc__5FB337D6" FromRole="Socio" ToRole="Afiliado" />
         </EntityType>
         <EntityType Name="AspNetRole">
           <Key>
@@ -282,6 +316,30 @@
           <End Type="FinalWebModel.AspNetRole" Role="AspNetRole" Multiplicity="*" />
           <End Type="FinalWebModel.AspNetUser" Role="AspNetUser" Multiplicity="*" />
         </Association>
+        <EntityType Name="Afiliado">
+          <Key>
+            <PropertyRef Name="idAfiliado" />
+          </Key>
+          <Property Name="idAfiliado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Apellidos" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="telefono" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Parentezco" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="idSocio" Type="Int32" />
+          <NavigationProperty Name="Socio" Relationship="FinalWebModel.FK__Afiliados__idSoc__5FB337D6" FromRole="Afiliado" ToRole="Socio" />
+        </EntityType>
+        <Association Name="FK__Afiliados__idSoc__5FB337D6">
+          <End Type="FinalWebModel.Socio" Role="Socio" Multiplicity="0..1" />
+          <End Type="FinalWebModel.Afiliado" Role="Afiliado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Socio">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Afiliado">
+              <PropertyRef Name="idSocio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -363,6 +421,18 @@
               <ScalarProperty Name="Id" ColumnName="RoleId" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="Afiliados">
+            <EntityTypeMapping TypeName="FinalWebModel.Afiliado">
+              <MappingFragment StoreEntitySet="Afiliados">
+                <ScalarProperty Name="idSocio" ColumnName="idSocio" />
+                <ScalarProperty Name="Parentezco" ColumnName="Parentezco" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="idAfiliado" ColumnName="idAfiliado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

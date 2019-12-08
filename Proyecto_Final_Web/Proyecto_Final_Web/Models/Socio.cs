@@ -14,6 +14,12 @@ namespace Proyecto_Final_Web.Models
     
     public partial class Socio
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Socio()
+        {
+            this.Afiliados = new HashSet<Afiliado>();
+        }
+    
         public int Id { get; set; }
         public string Nombre { get; set; }
         public string Apellidos { get; set; }
@@ -30,5 +36,8 @@ namespace Proyecto_Final_Web.Models
         public string EstadoMembresita { get; set; }
         public System.DateTime FechaIngreso { get; set; }
         public System.DateTime FechaSalida { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Afiliado> Afiliados { get; set; }
     }
 }

@@ -89,10 +89,16 @@ namespace Proyecto_Final_Web.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Nombre,Apellidos,Cedula,Foto,Direccion,Sexo,Edad,FechaNacimiento,TipoMembresia,LugarTrabajo,DireccionTrabajo,TelefonoOficina,EstadoMembresita,FechaIngreso,FechaSalida")] Socio socio)
+        public ActionResult Edit([Bind(Include = "Id,Nombre,Apellidos,Cedula,Foto,Direccion,Sexo,Edad,FechaNacimiento,TipoMembresia,LugarTrabajo,DireccionTrabajo,TelefonoOficina,EstadoMembresita,FechaIngreso,FechaSalida")] Socio socio, HttpPostedFileBase Image)
         {
             if (ModelState.IsValid)
             {
+                string fileName = Path.GetFileNameWithoutExtension(Image.FileName);
+                string extension = Path.GetExtension(Image.FileName);
+                fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                socio.Foto = "~/image/" + fileName;
+                fileName = Path.Combine(Server.MapPath("~/image/"), fileName);
+                Image.SaveAs(fileName);
                 db.Entry(socio).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

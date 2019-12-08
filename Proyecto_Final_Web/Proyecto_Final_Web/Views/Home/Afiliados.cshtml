@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewBag.Title = "Afiliados";
+}
+
+<h2>Afiliados</h2>
+
+<table class="table border-1 border-info">
+    <tr class="bg-info">
+        <th>
+            Afiliado
+        </th>
+        <th>
+            Parentesco
+        </th>
+        <th>
+            Telefono
+        </th>
+    </tr>
+   
+    @foreach (var item in ViewData["Afiliados"] as IEnumerable<Proyecto_Final_Web.Models.Listas>)
+    {
+    <tr>
+        <td>@item.listaAfiliados.Nombre @item.listaAfiliados.Apellidos </td>
+        <td>@item.listaAfiliados.Parentezco</td>
+        <td>@item.listaAfiliados.telefono</td>
+
+
+        @{ /*if (item.empleadoslista.salario.HasValue)
+{
+
+monto = monto + item.empleadoslista.salario.Value;
+
+}
+*/
+        }
+
+    </tr>
+
+
+
+            }
+ 
+
+</table>
+@Html.ActionLink("Volver", "Index", "Socios")

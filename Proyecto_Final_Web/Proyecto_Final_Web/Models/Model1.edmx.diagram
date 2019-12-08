@@ -13,6 +13,8 @@
         <AssociationConnector Association="FinalWebModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
         <AssociationConnector Association="FinalWebModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
         <AssociationConnector Association="FinalWebModel.AspNetUserRoles" />
+        <EntityTypeShape EntityType="FinalWebModel.Afiliado" Width="1.5" PointX="3" PointY="5.75" />
+        <AssociationConnector Association="FinalWebModel.FK__Afiliados__idSoc__5FB337D6" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -4,4 +4,33 @@
 <h2>@ViewBag.Title.</h2>
 <h3>@ViewBag.Message</h3>
 
-<p>Use this area to provide additional information.</p>
+
+<table class="table border-1 border-info">
+    <tr class="bg-info">
+        <th>
+            ID
+        </th>
+        <th>
+            EMAIL
+        </th>
+        <th>
+            USERNAME
+        </th>
+    </tr>
+
+    @foreach (var item in ViewData["Usuarios"] as IEnumerable<Proyecto_Final_Web.Models.Listas>)
+    {
+    <tr>
+        <td>@item.listaUsuarios.Id</td>
+        <td>@item.listaUsuarios.Email </td>
+
+        <td>@item.listaUsuarios.UserName</td>
+
+
+    </tr>
+
+
+    }
+ 
+</table>
+

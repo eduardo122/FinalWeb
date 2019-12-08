@@ -30,5 +30,6 @@ namespace Proyecto_Final_Web.Models
         public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
         public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
         public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
+        public virtual DbSet<Afiliado> Afiliados { get; set; }
     }
 }
