@@ -1,6 +1,5 @@
 ﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+    background-color: #34495e;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -25,4 +24,12 @@ textarea {
 
 .tabla {
    margin-left:0px;
+}
+
+.logo {
+    height: 200px;
+
+}
+.bg-custom {
+    background-color: #808080;
 }

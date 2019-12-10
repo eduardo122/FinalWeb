@@ -12,7 +12,7 @@ namespace Proyecto_Final_Web.Controllers
         {
             return View();
         }
-
+        [Authorize]
         public ActionResult About()
         {
             

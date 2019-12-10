@@ -4,15 +4,15 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Socios</h2>
+<h2 class=" text-info" >Socios</h2>
 
 <p>
     @Html.ActionLink("Agregar Nuevo Socio", "Create" , "",new {@class= "btn btn-success btn-lg text-white text-center" })
 </p>
-<div class=" tabla">
-    <table class="table-condensed">
-        <tr>
-            <th>
+<div class="p-5 table-responsive">
+    <table class="table-hover table-dark table  border-dark text-center " border="1">
+        <tr class="bg-dark text-primary border-bottom border-dark" >
+            <th class="mb-5">
                 @Html.DisplayNameFor(model => model.Nombre)
             </th>
             <th>

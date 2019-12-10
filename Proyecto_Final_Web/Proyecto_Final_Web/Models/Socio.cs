@@ -27,6 +27,7 @@ namespace Proyecto_Final_Web.Models
         public string Foto { get; set; }
         public string Direccion { get; set; }
         public string Sexo { get; set; }
+       
         public string Edad { get; set; }
         public System.DateTime FechaNacimiento { get; set; }
         public string TipoMembresia { get; set; }
@@ -40,4 +41,7 @@ namespace Proyecto_Final_Web.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Afiliado> Afiliados { get; set; }
     }
+    public enum genero { M,F }
+    public enum status { Activo, Inactivo }
+    public enum membresia { Miembro, Asociado ,VIP }
 }

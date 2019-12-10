@@ -16,12 +16,14 @@ namespace Proyecto_Final_Web.Controllers
         private FinalWebEntities db = new FinalWebEntities();
 
         // GET: Socios
+        [Authorize]
         public ActionResult Index()
         {
             return View(db.Socios.ToList());
         }
 
         // GET: Socios/Details/5
+        [Authorize]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -37,6 +39,7 @@ namespace Proyecto_Final_Web.Controllers
         }
 
         // GET: Socios/Create
+        [Authorize]
         public ActionResult Create()
         {
             return View();
@@ -45,6 +48,7 @@ namespace Proyecto_Final_Web.Controllers
         // POST: Socios/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Nombre,Apellidos,Cedula,Foto,Direccion,Sexo,Edad,FechaNacimiento,TipoMembresia,LugarTrabajo,DireccionTrabajo,TelefonoOficina,EstadoMembresita,FechaIngreso,FechaSalida")] Socio socio, HttpPostedFileBase ImageFile)
@@ -70,6 +74,7 @@ namespace Proyecto_Final_Web.Controllers
         }
 
         // GET: Socios/Edit/5
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -87,6 +92,7 @@ namespace Proyecto_Final_Web.Controllers
         // POST: Socios/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Nombre,Apellidos,Cedula,Foto,Direccion,Sexo,Edad,FechaNacimiento,TipoMembresia,LugarTrabajo,DireccionTrabajo,TelefonoOficina,EstadoMembresita,FechaIngreso,FechaSalida")] Socio socio, HttpPostedFileBase Image)
@@ -107,6 +113,7 @@ namespace Proyecto_Final_Web.Controllers
         }
 
         // GET: Socios/Delete/5
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -122,6 +129,7 @@ namespace Proyecto_Final_Web.Controllers
         }
 
         // POST: Socios/Delete/5
+        [Authorize]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

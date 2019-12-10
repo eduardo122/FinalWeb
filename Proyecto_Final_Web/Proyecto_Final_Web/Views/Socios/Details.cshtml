@@ -4,135 +4,136 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2 class="text-info">Detalles del socio</h2>
 
-<div>
-    <h4>Socio</h4>
+<div class="bg-dark text-center">
+
     <hr />
     <dl class="dl-horizontal">
-        <dt>
+        <dt class="text-info">
             @Html.DisplayNameFor(model => model.Nombre)
         </dt>
 
-        <dd>
+        <dd class="text-primary">
             @Html.DisplayFor(model => model.Nombre)
         </dd>
 
-        <dt>
+        <dt class="text-info">
             @Html.DisplayNameFor(model => model.Apellidos)
         </dt>
 
-        <dd>
+        <dd class="text-primary">
             @Html.DisplayFor(model => model.Apellidos)
         </dd>
 
-        <dt>
+        <dt class="text-info">
             @Html.DisplayNameFor(model => model.Cedula)
         </dt>
 
-        <dd>
+        <dd class="text-primary">
             @Html.DisplayFor(model => model.Cedula)
         </dd>
 
-        <dt>
+        <dt class="text-info">
             @Html.DisplayNameFor(model => model.Foto)
         </dt>
 
-        <dd>
-            <img src=@Url.Content(Model.Foto) style="height: 200px"/>
+        <dd class="text-primary">
+            <img src="@Url.Content(Model.Foto)" style="height:150px" />
         </dd>
 
-        <dt>
+        <dt class="text-info">
             @Html.DisplayNameFor(model => model.Direccion)
         </dt>
 
-        <dd>
+        <dd class="text-primary">
             @Html.DisplayFor(model => model.Direccion)
         </dd>
 
-        <dt>
+        <dt class="text-info">
             @Html.DisplayNameFor(model => model.Sexo)
         </dt>
 
-        <dd>
+        <dd class="text-primary">
             @Html.DisplayFor(model => model.Sexo)
         </dd>
 
-        <dt>
+        <dt class="text-info">
             @Html.DisplayNameFor(model => model.Edad)
         </dt>
 
-        <dd>
+        <dd class="text-primary">
             @Html.DisplayFor(model => model.Edad)
         </dd>
 
-        <dt>
+        <dt class="text-info">
             @Html.DisplayNameFor(model => model.FechaNacimiento)
         </dt>
 
-        <dd>
+        <dd class="text-primary">
             @Html.DisplayFor(model => model.FechaNacimiento)
         </dd>
 
-        <dt>
+        <dt class="text-info">
             @Html.DisplayNameFor(model => model.TipoMembresia)
         </dt>
 
-        <dd>
+        <dd class="text-primary">
             @Html.DisplayFor(model => model.TipoMembresia)
         </dd>
 
-        <dt>
+        <dt class="text-info">
             @Html.DisplayNameFor(model => model.LugarTrabajo)
         </dt>
 
-        <dd>
+        <dd class="text-primary">
             @Html.DisplayFor(model => model.LugarTrabajo)
         </dd>
 
-        <dt>
+        <dt class="text-info">
             @Html.DisplayNameFor(model => model.DireccionTrabajo)
         </dt>
 
-        <dd>
+        <dd class="text-primary">
             @Html.DisplayFor(model => model.DireccionTrabajo)
         </dd>
 
-        <dt>
+        <dt class="text-info">
             @Html.DisplayNameFor(model => model.TelefonoOficina)
         </dt>
 
-        <dd>
+        <dd class="text-primary">
             @Html.DisplayFor(model => model.TelefonoOficina)
         </dd>
 
-        <dt>
+        <dt class="text-info">
             @Html.DisplayNameFor(model => model.EstadoMembresita)
         </dt>
 
-        <dd>
+        <dd class="text-primary">
             @Html.DisplayFor(model => model.EstadoMembresita)
         </dd>
 
-        <dt>
+        <dt class="text-info">
             @Html.DisplayNameFor(model => model.FechaIngreso)
         </dt>
 
-        <dd>
+        <dd class="text-primary">
             @Html.DisplayFor(model => model.FechaIngreso)
         </dd>
 
-        <dt>
+        <dt class="text-info">
             @Html.DisplayNameFor(model => model.FechaSalida)
         </dt>
 
-        <dd>
+        <dd class="text-primary">
             @Html.DisplayFor(model => model.FechaSalida)
         </dd>
 
     </dl>
+    <p>
+        @Html.ActionLink("Editar", "Edit", new { id = Model.Id },new {@class = "btn btn-warning" }) |
+        @Html.ActionLink("Volver", "Index", "", new { @class="btn btn-info"})
+    </p>
+
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

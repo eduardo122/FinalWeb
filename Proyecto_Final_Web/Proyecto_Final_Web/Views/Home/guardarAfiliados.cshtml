@@ -4,18 +4,18 @@
     ViewBag.Title = "guardarAfiliados";
 }
 
-<h2>guardarAfiliados</h2>
+<h2 class="text-info">Registrar afiliado</h2>
 
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Afiliado</h4>
+        
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label col-md-2 text-info" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
@@ -23,7 +23,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Apellidos, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Apellidos, htmlAttributes: new { @class = "control-label col-md-2 text-info" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Apellidos, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Apellidos, "", new { @class = "text-danger" })
@@ -31,7 +31,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.telefono, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.telefono, htmlAttributes: new { @class = "control-label col-md-2 text-info" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.telefono, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.telefono, "", new { @class = "text-danger" })
@@ -39,7 +39,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Parentezco, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label("Paretensco", htmlAttributes: new { @class = "control-label col-md-2 text-info" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Parentezco, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Parentezco, "", new { @class = "text-danger" })
@@ -50,12 +50,12 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Agregar Afiliado" class="btn btn-info" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Regresar", "Index", "Socios", "", new { @class = "btn btn-primary" })
 </div>

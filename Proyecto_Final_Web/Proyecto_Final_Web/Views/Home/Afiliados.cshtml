@@ -3,10 +3,10 @@
     ViewBag.Title = "Afiliados";
 }
 
-<h2>Afiliados</h2>
+<h2 class="text-info" >Afiliados del socio</h2>
 
-<table class="table border-1 border-info">
-    <tr class="bg-info">
+<table class="table border-1 border-info table-info">
+    <tr class="bg-info text-light">
         <th>
             Afiliado
         </th>
@@ -20,7 +20,7 @@
    
     @foreach (var item in ViewData["Afiliados"] as IEnumerable<Proyecto_Final_Web.Models.Listas>)
     {
-    <tr>
+    <tr >
         <td>@item.listaAfiliados.Nombre @item.listaAfiliados.Apellidos </td>
         <td>@item.listaAfiliados.Parentezco</td>
         <td>@item.listaAfiliados.telefono</td>
@@ -43,4 +43,4 @@ monto = monto + item.empleadoslista.salario.Value;
  
 
 </table>
-@Html.ActionLink("Volver", "Index", "Socios")
+@Html.ActionLink("Volver", "Index", "Socios","",new { @class= "btn btn-primary"})

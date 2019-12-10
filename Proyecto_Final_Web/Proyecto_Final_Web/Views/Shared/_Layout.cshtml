@@ -10,34 +10,51 @@
 
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Nombre de aplicación", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Mantenimiento de socios", "Index", "Socios")</li>
-                    <li>@Html.ActionLink("Usuarios del sistema", "About", "Home")</li>
-                    
-                </ul>
-                @Html.Partial("_LoginPartial")
-            </div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+        <a class="navbar-brand text-info font-weight-bolder" href="#"><img src="~/img/logo.png" style="height:60px" /> Club de Socios</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active ml-4">
+
+                    @Html.ActionLink("Mantenimiento de socios", "Index", "Socios", "", new { @class = "nav-link text-info font-weight-bolder" })
+                <li class="nav-item ml-3">
+                <li>@Html.ActionLink("Usuarios del sistema", "About", "Home", "", new { @class = "nav-link text-info font-weight-bolder" })</li>
+            </ul>
+            <!-- <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>-->
+            <ul class="nav navbar-nav">
+                <li>@Html.Partial("_LoginPartial")</li>
+            </ul>
         </div>
-    </div>
-    <div class="container body-content">
+    </nav>
+
+
+    <div class="container body-content mt-5 mb-5">
         @RenderBody()
         <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Mi aplicación ASP.NET</p>
-        </footer>
-    </div>
 
+    </div>
+    <!--<footer class=" p-4 fixed-bottom mt-5" id="footer">
+        <div class="row mt-4  bg-dark">
+
+            <div id="copyright" class="col-6">
+                <p class="text-white mt-2">Manuel Eduardo Sánchez Valdez 2017-4921</p>
+            </div>
+
+            <div id="social" class="col pd-2 mb-3 mt-3 ml-5 d-flex justify-content-end">
+                <a href="https://twitter.com/EduardoSanz_122" target="_blank"> <img class="ml-5" src="~/img/icons/icon-twitter.jpg" id="tw" /></a>
+                <a href="https://www.facebook.com/manueleduardo.sanchezvaldez" target="_blank"><img class="ml-2" src="~/img/icons/icon-facebook.jpg" id="fb" /></a>
+                <a href="https://www.pinterest.es/" target="_blank"><img class="ml-2" src="~/img/icons/icon-pinterest.jpg" id="pin" /></a>
+                <a href="https://plus.google.com/?hl=es" target="_blank"><img class="ml-2" src="~/img/icons/icon-googleplus.jpg" id="gplus" /></a>
+            </div>
+        </div>
+    </footer>-->
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
